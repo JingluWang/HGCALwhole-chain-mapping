@@ -17,3 +17,13 @@
     root -l eventdataTree.C
 
 - Output rootfile: test.root
+
+
+## DQM plots
+#### location
+    cd DQMplots/
+
+- Plots produced for reference:
+  #### file location
+      cd ref/
+      root -l DQM_V0001_HGCAL_R014140848.root
