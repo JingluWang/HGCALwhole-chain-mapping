@@ -14,7 +14,7 @@ void eventdataTree(){
     uint32_t half = 0;
     std::vector<uint32_t> channelData(37, 0);
     int bxcounter    = 0;
-    int eventcounter = 0;
+    int eventcounter = 1;
     int orbitcounter = 0;
     int trigtime     = 0;
     int trigwidth    = 0;
