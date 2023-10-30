@@ -39,7 +39,11 @@ void eventdataTree(){
         eventcounter = i;    
 
         for (unsigned int erx = 0; erx < 6; erx++)  {
-            for (unsigned int ich = 0; ich < 37; ich++) { channelData[ich+2] = erx*37 + ich; }
+            for (unsigned int ich = 0; ich < 37; ich++) { 
+                unsigned int val = (erx*37 + ich) & 0x3ff;
+                channelData[ich+2] = val | (val<<10) | (val<<20); 
+            }
+
             chip = erx / 2;
             half = erx % 2;
 
