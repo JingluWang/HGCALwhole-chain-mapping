@@ -10,32 +10,32 @@ void eventdataTree(){
     TTree *T = new TTree("eventdata", "eventdata");
 
     // defining variables
-    uint32_t chip = 0;
-    uint32_t half = 0;
-    std::vector<uint32_t> channelData(37, 0);
-    uint32_t bxcounter    = 0;
-    uint32_t eventcounter = 1;
-    uint32_t event        = 1;
-    uint32_t orbitcounter = 0;
-    uint32_t trigtime     = 0;
-    uint32_t trigwidth    = 0;
+    unsigned int chip  = 0;
+    unsigned int event = 1;
+    std::vector<unsigned int> channelData(41, 0);
+    int half         = 0;
+    int bxcounter    = 0;
+    int eventcounter = 1;
+    int orbitcounter = 0;
+    int trigtime     = 0;
+    int trigwidth    = 0;
 
     // creating branches in eventdata tree
     T->Branch("chip",         &chip,                   "chip/i");
-    T->Branch("half",         &half,                   "half/i");
-    T->Branch("daqdata",      "std::vector<uint32_t>", &channelData);
-    T->Branch("bxcounter",    &bxcounter,              "bxcounter/i");
-    T->Branch("eventcounter", &eventcounter,           "eventcounter/i");
     T->Branch("event",        &event,                  "event/i");
-    T->Branch("orbitcounter", &orbitcounter,           "orbitcounter/i");
-    T->Branch("trigtime",     &trigtime,               "trigtime/i");
-    T->Branch("trigwidth",    &trigwidth,              "trigwidth/i");
+    T->Branch("daqdata",      "std::vector<uint32_t>", &channelData);
+    T->Branch("half",         &half,                   "half/I");
+    T->Branch("bxcounter",    &bxcounter,              "bxcounter/I");
+    T->Branch("eventcounter", &eventcounter,           "eventcounter/I");
+    T->Branch("orbitcounter", &orbitcounter,           "orbitcounter/I");
+    T->Branch("trigtime",     &trigtime,               "trigtime/I");
+    T->Branch("trigwidth",    &trigwidth,              "trigwidth/I");
 
     // filling the eventdata tree
     for(uint32_t erx = 0; erx < 6; erx++)  {
 
         for(uint32_t ich = 0; ich < 37; ich++) {
-            channelData[ich] = erx*37 + ich;
+            channelData[ich+2] = erx*37 + ich;
         }
 
         chip = erx / 2;
