@@ -1,5 +1,7 @@
 #include "lib.h"
 
+unsigned int Nevent = 100;
+
 void eventdataTree(){
     // ROOT init
     TFile *output = new TFile("test.root", "RECREATE");
@@ -32,7 +34,7 @@ void eventdataTree(){
     T->Branch("trigwidth",    &trigwidth,              "trigwidth/I");
 
     // filling the eventdata tree
-    for (unsigned int i = 0; i < event; i++) {
+    for (unsigned int i = 0; i < Nevent; i++) {
         event        = i;
         eventcounter = i;    
 
