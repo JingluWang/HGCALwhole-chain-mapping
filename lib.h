@@ -17,6 +17,7 @@
 
 // plotting
 #include "TH1D.h"
+#include "TH2Poly.h"
 #include <THStack.h>
 #include <TF1.h>
 #include <TCanvas.h>
