@@ -1,10 +1,40 @@
 #include "lib.h"
 
+// -------------------- Modification Zone - begin ----------------------
+// choose wafer
+int wafer = 4;// 1: LD | 2: LD3 | 3: LD4 | 4: HD
+
+// default wafer info: test
+TString outputFile = "test.root";
+int Nerx = 6;
+
+// Number of events
 unsigned int Nevent = 100;
+// -------------------- Modification Zone - end ----------------------
 
 void eventdataTree(){
+    // choose wafer
+    switch (wafer) {
+        case 1: 
+            outputFile = "LD.root";
+            Nerx = 6;
+            break;
+        case 2: 
+            outputFile = "LD3.root";
+            Nerx = 3;
+            break;
+        case 3:
+            outputFile = "LD4.root";
+            Nerx = 3;
+            break;
+        case 4:
+            outputFile = "HD.root";
+            Nerx = 12; 
+            break; 
+    }
+
     // ROOT init
-    TFile *output = new TFile("test.root", "RECREATE");
+    TFile *output = new TFile(outputFile, "RECREATE");
     TDirectory *dir = output->mkdir("hgcroc_rawdata");
     dir->cd();
 
@@ -38,9 +68,9 @@ void eventdataTree(){
         event        = i;
         eventcounter = i;    
 
-        for (unsigned int erx = 0; erx < 6; erx++)  {
-            for (unsigned int ich = 0; ich < 37; ich++) { 
-                unsigned int val = (erx*37 + ich) & 0x3ff;
+        for (unsigned int erx = 0; erx < Nerx; erx++)  {
+            for (unsigned int ich = 0; ich < 41; ich++) { 
+                unsigned int val = (erx*41 + ich) & 0x3ff;
                 channelData[ich+2] = val | (val<<10) | (val<<20); 
             }
 
