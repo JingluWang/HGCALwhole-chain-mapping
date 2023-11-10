@@ -2,8 +2,8 @@
 
 // ----------------------- Modification Zone - begin -----------------------
 // wafer
-TString wafer = "LD";
-//TString wafer = "LD3";
+//TString wafer = "LD";
+TString wafer = "LD3";
 //TString wafer = "LD4";
 //TString wafer = "HD";
 
