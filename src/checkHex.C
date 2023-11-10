@@ -1,31 +1,53 @@
 #include "../lib.h"
 
 // ----------------------- Modification Zone - begin -----------------------
-// wafer
-//TString wafer = "LD";
-TString wafer = "LD3";
-//TString wafer = "LD4";
-//TString wafer = "HD";
+// choose wafer
+int wafer = 2;// 1: LD | 2: LD3 | 3: LD4 | 4: HD
 
-// input file
-TString inputfile  = "../DQMplots/" + wafer + "/DQM_V0001_HGCAL_R014140848.root";
+// default wafer (LD)
+TString WAFER = "LD";
+TString TAG   = "LD_0";
+
+// general hex plot names without tags
+TString HEX_adc_avg   = "hex_adc_avg_zside0_plane1_u1_v1_";
+TString HEX_channelId = "hex_channelId_zside0_plane1_u1_v1_";
 
 // folder
 TString folderName = "DQMData/Run 14140848/HGCAL/Run summary/Summary";
-
-// hex plots
-TString HEX_adc_avg   = "hex_adc_avg_zside0_plane1_u1_v1_LD_0";
-TString HEX_channelId = "hex_channelId_zside0_plane1_u1_v1_LD_0";
 // ----------------------- Modification Zone - end -----------------------
 
 void checkHex() {
+    // choose wafer
+    switch (wafer) {
+        case 1:
+            WAFER = "LD";
+            TAG   = "LD_0";
+            break;
+        case 2:
+            WAFER = "LD3";
+            TAG   = "LD_3";
+            break;
+        case 3:
+            WAFER = "LD4";
+            TAG   = "LD_4";
+            break;
+        case 4:
+            WAFER = "HD";
+            TAG   = "HD";
+            break;
+    }
+
+    TString inputfile  = "../DQMplots/" + WAFER + "/DQM_V0001_HGCAL_R014140848.root";
+
     TFile *input = new TFile( inputfile );
     TDirectory *folder = (TDirectory*) input->Get( folderName );
 
-    TH2Poly *hexADC = (TH2Poly*) folder->Get( HEX_adc_avg );
+    // hex 1: adc_avg with wafer tag
+    TH2Poly *hexADC = (TH2Poly*) folder->Get( HEX_adc_avg + TAG );
     hexADC->SetDirectory(0);
 
-    TH2Poly *hexChannelId = (TH2Poly*) folder->Get( HEX_channelId );
+    // hex 2: channelId with wafer tag
+    TH2Poly *hexChannelId = (TH2Poly*) folder->Get( HEX_channelId + TAG );
     hexChannelId->SetDirectory(0);
 
     for (int i = 0; i < 200; i++) {
