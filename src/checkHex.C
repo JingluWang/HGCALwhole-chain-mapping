@@ -2,7 +2,11 @@
 
 // ----------------------- Modification Zone - begin -----------------------
 // choose wafer
+<<<<<<< HEAD
 int wafer = 3;// 1: LD | 2: LD3 | 3: LD4 | 4: HD
+=======
+int wafer = 4;// 1: LD | 2: LD3 | 3: LD4 | 4: HD
+>>>>>>> a73fcd6 (HD)
 
 // default wafer (LD)
 TString WAFER = "LD";
