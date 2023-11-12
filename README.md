@@ -19,7 +19,7 @@
 - Output rootfile: test.root
 
 
-## STEP 2: Generate DQM plots
+## STEP 2: Generate DQM plots (Example: LD -- MLFL00041ped)
 #### go to cmsenv
     . runDir.sh
 #### Reco command
@@ -31,11 +31,11 @@
 <img width="602" alt="DQMroot" src="https://github.com/JingluWang/HGCALwhole-chain-mapping/assets/107279970/b62b45f5-1b36-48f9-8554-5118cf9fa402">
 
 #### copy to and back to this folder
-    cp DQM_V0001_HGCAL_R014140848.root ../../srcMapping/DQMplots
+    cp DQM_V0001_HGCAL_R014140848.root ../../srcMapping/DQMplots/LD
     . toRootfile.sh
     
 #### plot location
-    cd DQMplots/
+    cd DQMplots/LD
 
 - **Plots (LD: MLFL00041ped)**
   - adc_avg
