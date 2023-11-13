@@ -2,7 +2,7 @@
 
 // -------------------- Modification Zone - begin ----------------------
 // choose wafer
-int wafer = 4;// 1: LD | 2: LD3 | 3: LD4 | 4: HD
+int wafer = 1;// 1: LD | 2: LD3 | 3: LD4 | 4: HD
 
 // default wafer info: test
 TString outputFile = "test.root";
@@ -71,7 +71,7 @@ void eventdataTree(){
         for (unsigned int erx = 0; erx < Nerx; erx++)  {
             uint16_t cm0 = (erx + 1) * 39 - 2;
             uint16_t cm1 = (erx + 1) * 39 - 1;
-            channelData[1] = ((cm0 & 0x3ff) << 10) | (cm1 & 0x3ff);
+            channelData[1] = (cm1 & 0x3ff) | ((cm0 & 0x3ff) << 10) | ((cm1 & 0x3ff) << 20);
 
             for (unsigned int ich = 0; ich < 39; ich++) { 
                 unsigned int val = (erx*39 + ich) & 0x3ff;
