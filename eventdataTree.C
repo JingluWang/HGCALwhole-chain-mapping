@@ -2,7 +2,7 @@
 
 // -------------------- Modification Zone - begin ----------------------
 // choose wafer
-int wafer = 2;// 1: LD | 2: LD3 | 3: LD4 | 4: HD
+int wafer = 4;// 1: LD | 2: LD3 | 3: LD4 | 4: HD
 
 // default wafer info: test
 TString outputFile = "test.root";
