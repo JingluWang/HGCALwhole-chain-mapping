@@ -2,7 +2,7 @@
 
 // ----------------------- Modification Zone - begin -----------------------
 // choose wafer
-int wafer = 4;// 1: LD | 2: LD3 | 3: LD4 | 4: HD
+int wafer = 1;// 1: LD | 2: LD3 | 3: LD4 | 4: HD
 
 // default wafer (LD)
 TString WAFER = "LD";
@@ -55,6 +55,7 @@ void checkHex() {
         float xChannelId = hexChannelId->GetBinContent(i);
         float diff       = xADC - xChannelId;
 
-        std::cout << "bin = " << i << "    " << "adc_avg - channelId = " << diff << std::endl;
+        std::cout << "bin=" << i << ",\t    adc_avg=" << xADC << ",\t    channelId=" << xChannelId << ",\t    adc_avg-channelId=" << diff << std::endl;
+
     }
 }

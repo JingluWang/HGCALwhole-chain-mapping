@@ -75,7 +75,7 @@ void eventdataTree(){
 
             for (unsigned int ich = 0; ich < 39; ich++) { 
                 unsigned int val = (erx*39 + ich) & 0x3ff;
-                channelData[ich+2] = val | (val<<10) | (val<<20); 
+                channelData[ich+2] = val | (val << 10) | (val << 20); 
             }
 
             chip = erx / 2;
