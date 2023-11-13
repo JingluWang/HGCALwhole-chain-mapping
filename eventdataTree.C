@@ -73,7 +73,7 @@ void eventdataTree(){
             uint32_t cm1 = (erx + 1) * 39 - 1;
             channelData[1] = (cm1 & 0x3ff) | ((cm0 & 0x3ff) << 10);
 
-            for (unsigned int ich = 2; ich < 39; ich++) { 
+            for (unsigned int ich = 0; ich < 37; ich++) { 
                 uint32_t val = (erx*39 + ich) & 0x3ff;
                 channelData[ich+2] = val | (val << 10) | (val << 20); 
             }
